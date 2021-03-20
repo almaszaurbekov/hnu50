@@ -7,7 +7,7 @@ export const NavigationItem = styled(AnchorButton)<AnchorButtonProps & { ref?: F
   ${
     ({ theme }) => css`
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 500;
       padding: 0 8px;
       color: ${theme.textColor};
       transition: color 0.2s, transform 0.2s;

@@ -8,12 +8,12 @@ export const DropdownItem = styled(AnchorButton)<AnchorButtonProps>`
       display: block;
       width: 100%;
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 500;
       padding: 3px 0;
-      color: ${theme.textColor};
+      color: #fff;
       transition: color 0.2s;
       &:hover {
-        color: ${theme.accentBlue};
+        color: rgba(255,255,255,.7);
       }
     `
   }`;

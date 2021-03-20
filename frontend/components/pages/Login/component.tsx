@@ -12,13 +12,15 @@ import { controller, notifyError } from '../../../core';
 import { AnchorButton } from '../../atoms/AnchorButton';
 import { Input } from '../../atoms/Input';
 import { useTheme } from '@emotion/react';
+import { Card } from '../../molecules/Card';
+import { Paragraph } from '../../atoms/Paragraph';
 
 const Login: FC<Props> = ({language, accessToken}: Props) => {
   const router = useRouter();
   const theme = useTheme();
 
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   if (accessToken?.length) {
     router.push('/');
@@ -54,62 +56,122 @@ const Login: FC<Props> = ({language, accessToken}: Props) => {
 
 
   return (
-    <Container
-      isForm
-      css={{
-        paddingTop: 100
-      }}
-    >
+    <Container className="pt-5">
       <Head>
-        <title>Вход</title>
+        <title>Login</title>
       </Head>
-      <Heading
-        as="h1"
+      <Card
+        className="p-5 d-flex align-items-center animate__animated animate__fadeInDown"
+        disableBorder
         css={{
-          textAlign: 'center',
-          fontSize: 22,
-          marginBottom: 20
+          background: "#fff",
+          boxShadow: theme.blockShadowWide
         }}
-      >Вход</Heading>
-
-      <Input
-        type="text"
-        label="Электронная почта"
-        placeholder="Введите электронную почту"
-        onChange={(event) => setEmail(event.currentTarget.value)}
-      />
-      <Input
-        type="password"
-        label="Пароль"
-        placeholder="Введите пароль"
-        onChange={(event) => setPassword(event.currentTarget.value)}
-      />
-
-      <div className="d-flex align-items-center mt-3">
-        <Button
-          css={{
-            padding: "10px 45px",
-            marginRight: 25,
-            display: "inline-block",
-            width: "auto",
-            fontSize: 14,
-            textTransform: "capitalize",
-          }}
-          onClick={handleSubmit}
-        >Войти</Button>
-        <div css={{ textAlign: "center" }}>
-          <AnchorButton
-            css={{
-              textAlign: 'center',
-              fontSize: 12,
-              color: theme.greyText,
-            }}
-            onClick={() => router.push(`/register`)}
-          >
-            Еще нет акаунта?
-          </AnchorButton>
+      >
+        <div css={{ textAlign: "center", flex: 1, padding: "0 50px" }}>
+          <img className="w-100 animate__animated animate__fadeInLeft" src="/illustration-login.png" alt=""/>
         </div>
-      </div>
+        <Card className="animate__animated animate__fadeInDown" css={{ flex: "0 0 50%", height: "100%", padding: 50 }}>
+          <Card className="p-4 animate__animated animate__fadeInDown" css={{ background: "#fff",  boxShadow: theme.blockShadowWide }}>
+            <Heading
+              as="h1"
+              css={{
+                textAlign: 'center',
+                fontSize: 22,
+                fontWeight: 800,
+                color: theme.accentBlue,
+                marginBottom: 5
+              }}
+            >Keep connected</Heading>
+            <Paragraph css={{
+              color: theme.accentBlue,
+              fontSize: 13,
+              maxWidth: 200,
+              textAlign: "center",
+              margin: "auto",
+              marginBottom: 20,
+
+            }}>Login with your credential to access your account</Paragraph>
+
+            <Input
+              type="text"
+              label="Email"
+              placeholder="Enter your email"
+              onChange={(event) => setEmail(event.currentTarget.value)}
+            />
+            <Input
+              type="password"
+              label="Password"
+              placeholder="Enter your password"
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </Card>
+
+
+          <div className="mt-4 animate__animated animate__fadeInRight" css={{ maxWidth: 200, margin: "auto" }}>
+            <Button
+              css={{
+                padding: "10px 45px",
+                marginRight: 25,
+                display: "block",
+                width: "100%",
+                fontSize: 14,
+                textTransform: "capitalize",
+              }}
+              onClick={handleSubmit}
+            >Login</Button>
+            <div css={{ textAlign: "center" }}>
+              <AnchorButton
+                css={{
+                  position: "relative",
+                  display: "block",
+                  textAlign: 'center',
+                  width: "100%",
+                  fontSize: 12,
+                  margin: "15px 0",
+                  fontWeight: 500,
+                  color: "#fff",
+                  "&:hover": {
+                    color: "rgba(255,255,255,.7)"
+                  },
+                  "&::after": {
+                    content: '""',
+                    display: "block",
+                    width: "100%",
+                    height: 2,
+                    background: theme.accentBlueHover,
+                    position: "absolute",
+                    top: "50%",
+                    left: 0,
+                    zIndex: 1
+                  }
+                }}
+                onClick={() => router.push(`/register`)}
+              >
+                <span css={{ display: "inline-block", background: theme.darkBg, padding: "0px 5px", position: "relative", zIndex: 5 }}>Don't have an account?</span>
+              </AnchorButton>
+            </div>
+            <Button
+              css={{
+                padding: "10px 45px",
+                marginRight: 25,
+                display: "block",
+                width: "100%",
+                fontSize: 14,
+                background: "#fff",
+                color: theme.accentBlue,
+                textTransform: "capitalize",
+                "&:hover": {
+                  background: "rgba(255,255,255,.7)"
+                }
+              }}
+              onClick={() => router.push(`/register`)}
+            >Register</Button>
+          </div>
+        </Card>
+
+      </Card>
+
 
 
     </Container>
