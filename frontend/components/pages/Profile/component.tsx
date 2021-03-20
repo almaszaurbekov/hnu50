@@ -28,6 +28,9 @@ const Profile: FC<Props> = ({ language, user, recent_results, interests }: Props
 
   return (
     <Container className="pt-5">
+      <Head>
+        <title>Профиль {user.name}</title>
+      </Head>
       <Card
         className="d-flex align-items-start p-5 animate__animated animate__fadeInDown"
         disableBorder
