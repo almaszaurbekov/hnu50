@@ -13,6 +13,8 @@ import { AnchorButton } from '../../atoms/AnchorButton';
 import { Input } from '../../atoms/Input';
 import { useTheme } from '@emotion/react';
 import { Divider } from '../../atoms/Divider';
+import { Card } from '../../molecules/Card';
+import { Paragraph } from '../../atoms/Paragraph';
 
 const Register: FC<Props> = ({ language, accessToken }: Props) => {
   const router = useRouter();
@@ -74,89 +76,152 @@ const Register: FC<Props> = ({ language, accessToken }: Props) => {
 
 
   return (
-    <Container
-      isForm
-      css={{
-        paddingTop: 100
-      }}
-    >
+    <Container className="pt-5">
       <Head>
         <title>Регистрация</title>
       </Head>
-      <Heading
-        as="h1"
+      <Card
+        className="p-5 animate__animated animate__fadeInDown"
         css={{
-          textAlign: 'center',
-          fontSize: 22,
-          marginBottom: 20
+          boxShadow: theme.blockShadowWide
         }}
-      >Регистрация</Heading>
-
-      <Input
-        type="text"
-        label="Ваше имя"
-        placeholder="Введите ваше имя"
-        onChange={(event) => setName(event.currentTarget.value)}
-      />
-      <Input
-        type="text"
-        label="Ваша фамилия"
-        placeholder="Введите вашу фамилию"
-        onChange={(event) => setLastName(event.currentTarget.value)}
-      />
-      <Input
-        type="text"
-        label="Электронная почта"
-        placeholder="Введите электронную почту"
-        onChange={(event) => setEmail(event.currentTarget.value)}
-      />
-      <Divider
-        css={{
-          margin: "20px auto",
-          marginTop: 30,
-          color: theme.greyText,
-        }}
-      />
-      <Input
-        type="password"
-        label="Пароль"
-        placeholder="Введите пароль"
-        onChange={(event) => setPassword(event.currentTarget.value)}
-      />
-      <Input
-        type="password"
-        label="Подтверждение пароля"
-        placeholder="Подтвердите пароль"
-        onChange={(event) => setConfirmPassword(event.currentTarget.value)}
-      />
-
-      <Button
-        css={{
-          display: "block",
-          width: "100%",
-          padding: "10px 45px",
-          marginRight: 25,
-          fontSize: 14,
-          textTransform: "capitalize",
-          marginTop: 15,
-        }}
-        onClick={handleSubmit}
-      >Зарегистрироваться</Button>
-      <div css={{ textAlign: "center" }}>
-        <AnchorButton
+      >
+        <Card
+          className="p-5 animate__animated animate__fadeInDown"
           css={{
-            textAlign: 'center',
-            fontSize: 12,
-            marginTop: 15,
-            color: theme.greyText,
+            background: "#fff",
+            boxShadow: theme.blockShadowWide
           }}
-          onClick={() => router.push(`/login`)}
         >
-          Уже зарегистрированы?
-        </AnchorButton>
-      </div>
+          <Heading
+            as="h1"
+            css={{
+              textAlign: 'center',
+              fontSize: 22,
+              fontWeight: 800,
+              color: theme.accentBlue,
+              marginBottom: 5
+            }}
+          >Join us</Heading>
+          <Paragraph css={{
+            color: theme.accentBlue,
+            fontSize: 13,
+            maxWidth: 200,
+            textAlign: "center",
+            margin: "auto",
+            marginBottom: 20,
+
+          }}>Join us and find your ninja path</Paragraph>
+          <div className="d-flex align-items-center">
+            <Input
+              labelClassName="col px-0 pr-2"
+              type="text"
+              label="Your name"
+              placeholder="Enter your name"
+              onChange={(event) => setName(event.currentTarget.value)}
+            />
+            <Input
+              labelClassName="col px-0 pl-2"
+              type="text"
+              label="Your last name"
+              placeholder="Enter your last name"
+              onChange={(event) => setLastName(event.currentTarget.value)}
+            />
+          </div>
+          <Input
+            type="text"
+            label="Email"
+            placeholder="Enter your email"
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
+          <Divider
+            css={{
+              margin: "20px auto",
+              marginTop: 30,
+              color: theme.greyText,
+            }}
+          />
+          <div className="d-flex align-items-center">
+            <Input
+              labelClassName="col px-0 pr-2"
+              type="password"
+              label="Password"
+              placeholder="Enter your password"
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+            <Input
+              labelClassName="col px-0 pl-2"
+              type="password"
+              label="Password confirmation"
+              placeholder="Repeat your password"
+              onChange={(event) => setConfirmPassword(event.currentTarget.value)}
+            />
+
+          </div>
+        </Card>
 
 
+        <div className="mt-4 animate__animated animate__fadeInRight" css={{ maxWidth: 200, margin: "auto" }}>
+          <Button
+            css={{
+              padding: "10px 45px",
+              marginRight: 25,
+              display: "block",
+              width: "100%",
+              fontSize: 14,
+              textTransform: "capitalize",
+            }}
+            onClick={handleSubmit}
+          >Register</Button>
+          <div css={{ textAlign: "center" }}>
+            <AnchorButton
+              css={{
+                position: "relative",
+                display: "block",
+                textAlign: 'center',
+                width: "100%",
+                fontSize: 12,
+                margin: "15px 0",
+                fontWeight: 500,
+                color: "#fff",
+                "&:hover": {
+                  color: "rgba(255,255,255,.8)"
+                },
+                "&::after": {
+                  content: '""',
+                  display: "block",
+                  width: "100%",
+                  height: 2,
+                  background: theme.accentBlueHover,
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  zIndex: 1
+                }
+              }}
+              onClick={() => router.push(`/login`)}
+            >
+              <span css={{ display: "inline-block", background: theme.darkBg, padding: "0px 5px", position: "relative", zIndex: 5 }}>Already have an account?</span>
+            </AnchorButton>
+          </div>
+          <Button
+            css={{
+              padding: "10px 45px",
+              marginRight: 25,
+              display: "block",
+              width: "100%",
+              fontSize: 14,
+              background: "#fff",
+              color: theme.accentBlue,
+              textTransform: "capitalize",
+              "&:hover": {
+                background: "rgba(255,255,255,.7)"
+              }
+            }}
+            onClick={() => router.push(`/login`)}
+          >Login</Button>
+        </div>
+      </Card>
     </Container>
   );
 };

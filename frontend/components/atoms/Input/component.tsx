@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { Props } from './props';
 import { useTheme } from '@emotion/react';
 
-export const Input: FC<Props> = ({ label, ...rest }: Props) => {
+export const Input: FC<Props> = ({ label, labelClassName, ...rest }: Props) => {
   const theme = useTheme();
   return (
-    <label>
+    <label className={labelClassName}>
       {label && (
         <span css={{
           display: "block",

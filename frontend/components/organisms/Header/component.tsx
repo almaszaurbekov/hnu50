@@ -32,30 +32,32 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
 
   return (
     <header css={{ background: theme.lightBg }} {...rest}>
-      <Container>
+      <Container css={{
+        borderBottom: `1px solid ${theme.greyBorder}`,
+      }}>
         <div className="d-flex align-items-center">
           <Heading
             as="span"
             css={{
-              fontSize: 50,
-              fontWeight: 800
+              fontSize: 20,
+              fontWeight: 600
             }}
           >
-            <AnchorButton onClick={() => router.push(`/`)}>A</AnchorButton>
+            <AnchorButton className="d-flex align-items-center py-3" onClick={() => router.push(`/`)}>
+              <img src="/logo.png" alt="" css={{ height: 40 }} />
+              <span>100specialists</span>
+            </AnchorButton>
           </Heading>
           <nav
             css={{
-              marginLeft: 30
-            }}
-          >
-            <NavigationItem onClick={() => router.push(`/articles`)}>Категории</NavigationItem>
-            <NavigationItem onClick={() => router.push(`/articles`)}>Все статьи</NavigationItem>
-            <NavigationItem onClick={() => router.push(`/contacts`)}>Контакты</NavigationItem>
-          </nav>
-          <nav
-            css={{
-              marginLeft: "auto"
+              marginLeft: "auto",
+              display: "flex",
+              alignItems: "center"
             }}>
+            <NavigationItem onClick={() => router.push(`/`)}>Main</NavigationItem>
+            <NavigationItem onClick={() => router.push(`/university`)}>University</NavigationItem>
+            <NavigationItem onClick={() => router.push(`/specialization`)}>Specialization</NavigationItem>
+            <NavigationItem onClick={() => router.push(`/tests`)}>Tests</NavigationItem>
             {isAuthenticated ? (
               <Fragment>
                 {user ? (
@@ -76,6 +78,7 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
                           cursor: "pointer",
                           outline: "none",
                           width: 160,
+                          fontWeight: 500,
                           transition: "color 0.2s",
                           "&:hover": {
                             color: theme.accentBlue,
@@ -88,7 +91,7 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
                             css={{
                               display: "inline-block",
                               width: 35,
-                              marginRight: 15
+                              marginRight: 15,
                             }}
                           />
                           <div>
@@ -100,29 +103,31 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
                     }
                   >
                     <Card
+                      disableBorder
                       css={{
                         width: 160,
                         boxShadow: theme.blockShadow,
+                        borderRadius: 10,
                         padding: "15px 25px"
                       }}
                     >
-                      <DropdownItem>Профиль</DropdownItem>
-                      <DropdownItem>Настройки</DropdownItem>
+                      <DropdownItem>Profile</DropdownItem>
+                      <DropdownItem>Settings</DropdownItem>
                       <Divider
+                        color={theme.accentBlueHover}
                         css={{
-                          margin: "10px auto",
+                          margin: "7px auto",
                         }}
-                        color="#dcdcdc"
                       />
-                      <DropdownItem onClick={handleLogout}>Выйти</DropdownItem>
+                      <DropdownItem onClick={handleLogout}>Log out</DropdownItem>
                     </Card>
                   </Dropdown>
                   ) : null}
               </Fragment>
             ) : (
               <Fragment>
-                <NavigationItem onClick={() => router.push(`/login`)}>Войти</NavigationItem>
-                <NavigationItem onClick={() => router.push(`/register`)}>Зарегистрироваться</NavigationItem>
+                <NavigationItem onClick={() => router.push(`/login`)}>Login</NavigationItem>
+                <NavigationItem onClick={() => router.push(`/register`)}>Sign Up</NavigationItem>
               </Fragment>
             )}
           </nav>

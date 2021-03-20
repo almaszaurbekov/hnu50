@@ -20,10 +20,12 @@ import React from 'react';
 import { ThemeContextProvider, TokenContext, UserContext } from '../components/contexts';
 import { Header } from '../components/organisms/Header';
 import 'react-toastify/dist/ReactToastify.css';
-import { Notification } from '../components';
+import { Container, Notification } from '../components';
 import App from 'next/app';
 import { controller, notifyError } from '../core';
 import { User } from '../components/types/User';
+import { useTheme } from '@emotion/react';
+import { Footer } from '../components/organisms/Footer';
 
 const { Provider: StoreProvider } = context;
 
@@ -77,6 +79,7 @@ class MyApp extends App<{}, {}, State> {
               <Header />
               <Notification />
               <Component accessToken={this.state.accessToken} {...pageProps} />
+              <Footer />
             </UserContext.Provider>
           </TokenContext.Provider>
         </ThemeContextProvider>
