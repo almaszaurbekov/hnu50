@@ -6,7 +6,7 @@ import { ForwardedRef, forwardRef } from 'react';
 export const NavigationItem = styled(AnchorButton)<AnchorButtonProps & { ref?: ForwardedRef<unknown> }>`
   ${
     ({ theme }) => css`
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 500;
       padding: 0 8px;
       color: ${theme.textColor};

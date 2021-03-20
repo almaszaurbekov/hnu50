@@ -7,7 +7,7 @@ export const DropdownItem = styled(AnchorButton)<AnchorButtonProps>`
     ({ theme }) => css`
       display: block;
       width: 100%;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 500;
       padding: 3px 0;
       color: #fff;
