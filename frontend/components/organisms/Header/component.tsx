@@ -71,7 +71,7 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
                       <button
                         className="d-block"
                         css={{
-                          fontSize: 13,
+                          fontSize: 15,
                           fontFamily: "inherit",
                           background: "transparent",
                           border: "none",
@@ -111,7 +111,7 @@ export const Header: FC<Props> = ({ ...rest }: Props) => {
                         padding: "15px 25px"
                       }}
                     >
-                      <DropdownItem>Profile</DropdownItem>
+                      <DropdownItem onClick={() => router.push(`/profile/${user.id}`)}>Profile</DropdownItem>
                       <DropdownItem>Settings</DropdownItem>
                       <Divider
                         color={theme.accentBlueHover}
